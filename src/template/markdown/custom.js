@@ -1,13 +1,5 @@
 export default `/* 自定义样式，实时生效，浏览器实时缓存 */
 
-/* 全局属性
- * 页边距 padding: 30px;
- * 全文字体 font-family: ptima-Regular;
- * 英文换行 word-break: break-all;
- */
-#nice {
-}
-
 /* 段落，下方未标注标签参数均同此处
  * 上边距 margin-top: 5px;
  * 下边距 margin-bottom: 5px;

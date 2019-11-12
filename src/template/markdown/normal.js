@@ -1,10 +1,4 @@
-export default `/* 全局属性
- * 页边距 padding: 30px;
- * 全文字体 font-family: ptima-Regular;
- * 英文换行 word-break: break-all;
- */
-#nice {
-}
+export default `/* 自定义样式，实时生效，浏览器实时缓存 */
 
 /* 段落，下方未标注标签参数均同此处
  * 上边距 margin-top: 5px;
@@ -18,10 +12,18 @@ export default `/* 全局属性
  * 首行缩进 text-indent: 2em;
  */
 #nice p {
+  font-size:15px;
+  line-height:1.75em;
+  letter-spacing:0.1em;
+  margin:28px 0;
+  color:#333;
 }
 
 /* 一级标题 */
 #nice h1 {
+  line-height:1.75em;
+  letter-spacing:0.1em;
+  margin:1.75em 0;
 }
 
 /* 一级标题内容 */
@@ -34,6 +36,9 @@ export default `/* 全局属性
 
 /* 二级标题 */
 #nice h2 {
+  line-height:1.75em;
+  letter-spacing:0.1em;
+  margin:28px 0;
 }
 
 /* 二级标题内容 */
@@ -46,6 +51,9 @@ export default `/* 全局属性
 
 /* 三级标题 */
 #nice h3 {
+  line-height:1.75em;
+  letter-spacing:0.1em;
+  margin:28px 0;
 }
 
 /* 三级标题内容 */
@@ -71,12 +79,16 @@ export default `/* 全局属性
 /* 列表内容，不要设置li
  */
 #nice li section {
+  font-size:15px;
+  line-height:1.75em;
+  letter-spacing:0.1em;
+  color:#333;
 }
 
 /* 引用
-* 左边缘颜色 border-left-color: black;
-* 背景色 background: gray;
-*/
+ * 左边缘颜色 border-left-color: black;
+ * 背景色 background: gray;
+ */
 #nice blockquote {
 }
 
@@ -107,9 +119,9 @@ export default `/* 全局属性
 }
 
 /* 分隔线
-* 粗细、样式和颜色
-* border-top: 1px solid #3e3e3e;
-*/
+ * 粗细、样式和颜色
+ * border-top: 1px solid #3e3e3e;
+ */
 #nice hr {
 }
 
@@ -144,6 +156,10 @@ export default `/* 全局属性
  */
 #nice table tr th,
 #nice table tr td {
+  font-size:14px;
+  line-height:1.75em;
+  letter-spacing:0.1em;
+  color:#333;
 }
 
 /* 脚注文字 */
