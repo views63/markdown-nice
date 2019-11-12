@@ -20,33 +20,74 @@ export default `/* 自定义样式，实时生效，浏览器实时缓存 */
 }
 
 /* 一级标题 */
-#nice h1 {
-  line-height:1.75em;
-  letter-spacing:0.1em;
+h1 {
+  padding:0;
+  font-size:20px;
   margin:1.75em 0;
+  line-height:1.75em;
+  letter-spacing:1px;
+  text-align:center;
 }
 
 /* 一级标题内容 */
-#nice h1 span {
+h1 span {  
 }
 
 /* 一级标题修饰 请参考有实例的主题 */
-#nice h1:after {
+h1:before {     
+  content:'';
+  background-image:url(https://dev.tencent.com/u/views63/p/transfer/git/raw/master/20191023.png); 
+  background-repeat:no-repeat;  
+  width:60px;
+  height:30px;
+  background-size:60px 26.82px; 
+	float:left;
+  margin-top:8px;
 }
 
-/* 二级标题 */
-#nice h2 {
-  line-height:1.75em;
-  letter-spacing:0.1em;
-  margin:28px 0;
+/* 一级标题修饰 请参考有实例的主题 */
+h1:after {
+    content:'';
+    background-image:url(https://dev.tencent.com/u/views63/p/transfer/git/raw/master/20191023.png); 
+  background-repeat:no-repeat;  
+  width:60px;
+  height:30px;
+  background-size:60px 26.82px; 
+	float:right;
+  margin-top:8px;
+}
+
+ /* 二级标题 */
+h2 {
+  font-size:18px;
+  margin: 1.5em 0;
+  counter-increment: count2;
+  margin-bottom:2em;
+  border-bottom: 1px solid rgb(227, 227, 227);
 }
 
 /* 二级标题内容 */
-#nice h2 span {
+h2 span {
+  padding-left: 2px;
+  max-width: 300% !important;
+  border-bottom: 2px solid rgb(0, 112, 192);
+  line-height: 28px;  
+  color: rgb(0, 112, 192);
+  letter-spacing: 0.1em;
 }
 
 /* 二级标题修饰 请参考有实例的主题 */
-#nice h2:after {
+h2:before {
+	content: ""counter(count2)"";
+  margin-right: 8px;
+  padding: 4px 10px;
+  border-bottom: 2px solid rgb(0, 112, 192);
+  line-height: 28px;
+  background-color: rgb(0, 112, 192);
+  color: rgb(255, 255, 255);
+  border-radius: 80% 100% 90% 20%;
+  letter-spacing: 0.1em;
+  float:left;
 }
 
 /* 三级标题 */

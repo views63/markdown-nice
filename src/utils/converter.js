@@ -125,6 +125,17 @@ export const solveHtml = () => {
     const convertTag = codeMatch[0].replace(/display: block;/g, "display: -webkit-box;");
     res = res.replace(codeReg, convertTag);
   }
+  
+  const counter = /"counter\((\S+?)\)"/g;
+  const dict = {};
+  alert(res);
+  res = res.replace(counter, (matched, key) => {
+    alert(matched);
+    let value = dict[key];
+    value = value ? value + 1 : 1;
+    dict[key] = value;
+    return value;
+  });
   return res;
 };
 
