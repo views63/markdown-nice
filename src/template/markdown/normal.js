@@ -1,5 +1,4 @@
-export default `/* 自定义样式，实时生效，浏览器实时缓存 */
-
+export default `
 /* 段落，下方未标注标签参数均同此处
  * 上边距 margin-top: 5px;
  * 下边距 margin-bottom: 5px;
@@ -27,6 +26,7 @@ h1 {
   line-height:1.75em;
   letter-spacing:1px;
   text-align:center;
+  font-weight: bold;
 }
 
 /* 一级标题内容 */
@@ -47,8 +47,8 @@ h1:before {
 
 /* 一级标题修饰 请参考有实例的主题 */
 h1:after {
-    content:'';
-    background-image:url(https://dev.tencent.com/u/views63/p/transfer/git/raw/master/20191023.png); 
+  content:'';
+  background-image:url(https://dev.tencent.com/u/views63/p/transfer/git/raw/master/20191023.png); 
   background-repeat:no-repeat;  
   width:60px;
   height:30px;
@@ -74,6 +74,7 @@ h2 span {
   line-height: 28px;  
   color: rgb(0, 112, 192);
   letter-spacing: 0.1em;
+  font-weight: bold;
 }
 
 /* 二级标题修饰 请参考有实例的主题 */
@@ -95,6 +96,7 @@ h2:before {
   line-height:1.75em;
   letter-spacing:0.1em;
   margin:28px 0;
+  font-weight: bold;
 }
 
 /* 三级标题内容 */
