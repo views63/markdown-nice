@@ -128,9 +128,7 @@ export const solveHtml = () => {
   
   const counter = /"counter\((\S+?)\)"/g;
   const dict = {};
-  alert(res);
   res = res.replace(counter, (matched, key) => {
-    alert(matched);
     let value = dict[key];
     value = value ? value + 1 : 1;
     dict[key] = value;
