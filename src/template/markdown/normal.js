@@ -93,6 +93,7 @@ h2:before {
 
 /* 三级标题 */
 #nice h3 {
+  font-size:16px;
   line-height:1.75em;
   letter-spacing:0.1em;
   margin:28px 0;

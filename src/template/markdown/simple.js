@@ -38,6 +38,7 @@ h2 {
 
 /* 三级标题 */
 #nice h3 {
+  font-size:17px;
   line-height:2em;
   letter-spacing:1px;
   margin:28px 0;
