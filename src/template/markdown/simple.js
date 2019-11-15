@@ -1,5 +1,4 @@
-export default `
-/* 段落，下方未标注标签参数均同此处
+export default `/* 段落，下方未标注标签参数均同此处
  * 上边距 margin-top: 5px;
  * 下边距 margin-bottom: 5px;
  * 行高 line-height: 26px;
@@ -18,7 +17,7 @@ export default `
 }
 
 /* 一级标题 */
-h1 {
+#nice h1 {
   font-size:20px;
   line-height:2em;
   letter-spacing:1px;
@@ -27,7 +26,7 @@ h1 {
 }
 
  /* 二级标题 */
-h2 {
+#nice h2 {
   font-size:18px;
   line-height:2em;
   letter-spacing:1px;
@@ -84,7 +83,7 @@ h2 {
 #nice blockquote p {
 }
 
-/* 链接 
+/* 链接
  * border-bottom: 1px solid #009688;
  */
 #nice a {
@@ -92,6 +91,7 @@ h2 {
 
 /* 加粗 */
 #nice strong {
+  color: rgb(123, 12, 0);
 }
 
 /* 斜体 */
@@ -158,7 +158,7 @@ h2 {
 #nice .footnote-ref {
 }
 
-/* "参考资料"四个字 
+/* "参考资料"四个字
  * 内容 content: "参考资料";
  */
 #nice .footnotes-sep:before {
@@ -169,7 +169,7 @@ h2 {
 }
 
 /* 参考资料文字 */
-#nice .footnote-item p { 
+#nice .footnote-item p {
 }
 
 /* 参考资料解释 */
@@ -184,5 +184,5 @@ h2 {
 
 /* 行内公式
  */
-#nice .inline-equation svg { 
+#nice .inline-equation svg {
 }`;

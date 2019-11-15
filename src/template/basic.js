@@ -136,7 +136,7 @@ export default `/*默认样式，最佳实践*/
 #nice figcaption {
   margin-top: 5px;
   text-align: center;
-  color: #888;
+  color: #888888;
   font-size: 14px;
 }
 

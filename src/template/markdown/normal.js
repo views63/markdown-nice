@@ -1,4 +1,7 @@
-export default `
+export default `/*自定义样式，实时生效*/
+
+/*自定义样式，实时生效*/
+
 /* 段落，下方未标注标签参数均同此处
  * 上边距 margin-top: 5px;
  * 下边距 margin-bottom: 5px;
@@ -19,9 +22,9 @@ export default `
 }
 
 /* 一级标题 */
-h1 {
+#nice h1 {
   padding:0;
-  font-size:20px;
+  font-size:18px;
   margin:1.75em 0;
   line-height:1.75em;
   letter-spacing:1px;
@@ -30,56 +33,60 @@ h1 {
 }
 
 /* 一级标题内容 */
-h1 span {  
+#nice h1 span {
 }
 
 /* 一级标题修饰 请参考有实例的主题 */
-h1:before {     
-  content:'';
-  background-image:url(https://dev.tencent.com/u/views63/p/transfer/git/raw/master/20191023.png); 
-  background-repeat:no-repeat;  
+#nice h1:before {
+  content:"";
+  background-image:url(https://dev.tencent.com/u/views63/p/transfer/git/raw/master/20191023.png);
+  background-repeat:no-repeat;
   width:60px;
   height:30px;
-  background-size:60px 26.82px; 
+  background-size:60px 26.82px;
 	float:left;
   margin-top:8px;
 }
 
 /* 一级标题修饰 请参考有实例的主题 */
-h1:after {
-  content:'';
-  background-image:url(https://dev.tencent.com/u/views63/p/transfer/git/raw/master/20191023.png); 
-  background-repeat:no-repeat;  
+#nice h1:after {
+  content:"";
+  background-image:url(https://dev.tencent.com/u/views63/p/transfer/git/raw/master/20191023.png);
+  background-repeat:no-repeat;
   width:60px;
   height:30px;
-  background-size:60px 26.82px; 
+  background-size:60px 26.82px;
 	float:right;
   margin-top:8px;
 }
 
  /* 二级标题 */
-h2 {
-  font-size:18px;
-  margin: 1.5em 0;
+#nice h2 {
+  font-size:16px;
+  margin: 28px 0;
+	border-bottom: 2px solid rgb(227, 227, 227);
+	background-color: rgb(255, 255, 255);
+  height: 32px;
+  color: rgb(62, 62, 62);
   counter-increment: count2;
-  margin-bottom:2em;
-  border-bottom: 1px solid rgb(227, 227, 227);
 }
 
 /* 二级标题内容 */
-h2 span {
+#nice h2 span {
+  font-size:16px;
   padding-left: 2px;
-  max-width: 300% !important;
+  color: rgb(0, 112, 192);
   border-bottom: 2px solid rgb(0, 112, 192);
-  line-height: 28px;  
+  padding-bottom:5px;
+  line-height: 2.2em;
   color: rgb(0, 112, 192);
   letter-spacing: 0.1em;
   font-weight: bold;
 }
 
 /* 二级标题修饰 请参考有实例的主题 */
-h2:before {
-	content: ""counter(count2)"";
+#nice h2:before {
+  content: ""counter(count2)"";
   margin-right: 8px;
   padding: 4px 10px;
   border-bottom: 2px solid rgb(0, 112, 192);
@@ -89,11 +96,12 @@ h2:before {
   border-radius: 80% 100% 90% 20%;
   letter-spacing: 0.1em;
   float:left;
+  font-weight: bold;
 }
 
 /* 三级标题 */
 #nice h3 {
-  font-size:16px;
+  font-size:15px;
   line-height:1.75em;
   letter-spacing:0.1em;
   margin:28px 0;
@@ -140,7 +148,7 @@ h2:before {
 #nice blockquote p {
 }
 
-/* 链接 
+/* 链接
  * border-bottom: 1px solid #009688;
  */
 #nice a {
@@ -148,6 +156,11 @@ h2:before {
 
 /* 加粗 */
 #nice strong {
+  color: rgb(123, 12, 0);
+}
+
+#nice b {
+  color: #407600;
 }
 
 /* 斜体 */
@@ -214,7 +227,7 @@ h2:before {
 #nice .footnote-ref {
 }
 
-/* "参考资料"四个字 
+/* "参考资料"四个字
  * 内容 content: "参考资料";
  */
 #nice .footnotes-sep:before {
@@ -225,11 +238,15 @@ h2:before {
 }
 
 /* 参考资料文字 */
-#nice .footnote-item p { 
+#nice .footnote-item p {
 }
 
 /* 参考资料解释 */
 #nice .footnote-item p em {
+}
+
+#nice .block-equation {
+  font-size: 15px;
 }
 
 /* 行间公式
@@ -240,5 +257,5 @@ h2:before {
 
 /* 行内公式
  */
-#nice .inline-equation svg { 
+#nice .inline-equation svg {
 }`;
