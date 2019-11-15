@@ -281,9 +281,7 @@ export default `/*默认样式，最佳实践*/
 #nice .block-equation {
   display:block;
   text-align: center;
-  overflow: auto;
-  display: block;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
 }
 
 #nice .block-equation svg {
