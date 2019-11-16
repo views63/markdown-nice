@@ -1,6 +1,8 @@
 export default `/*自定义样式，实时生效*/
 
-/*自定义样式，实时生效*/
+/* comment
+（）,<span style="color:#888888;">$1</span>
+*/
 
 /* 段落，下方未标注标签参数均同此处
  * 上边距 margin-top: 5px;
@@ -77,7 +79,7 @@ export default `/*自定义样式，实时生效*/
   padding-left: 2px;
   color: rgb(0, 112, 192);
   border-bottom: 2px solid rgb(0, 112, 192);
-  padding-bottom:5px;
+  padding-bottom:4px;
   line-height: 2.2em;
   color: rgb(0, 112, 192);
   letter-spacing: 0.1em;
@@ -245,8 +247,9 @@ export default `/*自定义样式，实时生效*/
 #nice .footnote-item p em {
 }
 
-#nice .block-equation {
+#nice .block-equation {  
   font-size: 15px;
+  margin: 1em 0;
 }
 
 /* 行间公式
