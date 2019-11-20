@@ -45,12 +45,12 @@ export const TEMPLATE_OPTIONS = [
   {
     id: "normal",
     name: "默认主题",
-    author: "zhning12",
+    author: "",
   },
   {
     id: "simple",
     name: "简",
-    author: "aco",
+    author: "",
   },
   {
     id: "rose",
