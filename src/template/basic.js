@@ -127,9 +127,7 @@ export default `/*默认样式，最佳实践*/
 
 /*图片*/
 #nice figure {
-  margin: 0;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 28px 0;
 }
 
 /*图片描述文字*/

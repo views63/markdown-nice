@@ -4,6 +4,10 @@ export default `/*自定义样式，实时生效*/
 （）,<span style="color:#888888;">$1</span>
 */
 
+#nice {
+  margin: 0 8px;
+}
+
 /* 段落，下方未标注标签参数均同此处
  * 上边距 margin-top: 5px;
  * 下边距 margin-bottom: 5px;
@@ -28,7 +32,7 @@ export default `/*自定义样式，实时生效*/
 #nice h1 {
   padding:0;
   font-size:18px;
-  margin:1.75em 0;
+  margin: 28px 0;
   line-height:2em;
   text-align: justify;
   letter-spacing:1px;
