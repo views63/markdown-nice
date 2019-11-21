@@ -17,7 +17,8 @@ export default `/*自定义样式，实时生效*/
  */
 #nice p {
   font-size:15px;
-  line-height:1.75em;
+  line-height:2em;
+  text-align: justify;
   letter-spacing:0.1em;
   margin:28px 0;
   color:#333;
@@ -28,7 +29,8 @@ export default `/*自定义样式，实时生效*/
   padding:0;
   font-size:18px;
   margin:1.75em 0;
-  line-height:1.75em;
+  line-height:2em;
+  text-align: justify;
   letter-spacing:1px;
   text-align:center;
   font-weight: bold;
@@ -104,7 +106,8 @@ export default `/*自定义样式，实时生效*/
 /* 三级标题 */
 #nice h3 {
   font-size:15px;
-  line-height:1.75em;
+  line-height:2em;
+  text-align: justify;
   letter-spacing:0.1em;
   margin:28px 0;
   font-weight: bold;
@@ -134,7 +137,8 @@ export default `/*自定义样式，实时生效*/
  */
 #nice li section {
   font-size:15px;
-  line-height:1.75em;
+  line-height:2em;
+  text-align: justify;
   letter-spacing:0.1em;
   color:#333;
 }
@@ -216,7 +220,8 @@ export default `/*自定义样式，实时生效*/
 #nice table tr th,
 #nice table tr td {
   font-size:14px;
-  line-height:1.75em;
+  line-height:2em;
+  text-align: justify;
   letter-spacing:0.1em;
   color:#333;
 }

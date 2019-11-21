@@ -12,6 +12,7 @@ export default `/* 段落，下方未标注标签参数均同此处
 #nice p {
   font-size:16px;
   line-height:2em;
+  text-align: justify;
   letter-spacing:1px;
   margin:28px 0;
 }
@@ -20,6 +21,7 @@ export default `/* 段落，下方未标注标签参数均同此处
 #nice h1 {
   font-size:20px;
   line-height:2em;
+  text-align: justify;
   letter-spacing:1px;
   margin:28px 0;
   font-weight: bold;
@@ -29,6 +31,7 @@ export default `/* 段落，下方未标注标签参数均同此处
 #nice h2 {
   font-size:18px;
   line-height:2em;
+  text-align: justify;
   letter-spacing:1px;
   margin:28px 0;
   font-weight: bold;
@@ -39,6 +42,7 @@ export default `/* 段落，下方未标注标签参数均同此处
 #nice h3 {
   font-size:17px;
   line-height:2em;
+  text-align: justify;
   letter-spacing:1px;
   margin:28px 0;
   font-weight: bold;
@@ -69,6 +73,7 @@ export default `/* 段落，下方未标注标签参数均同此处
 #nice li section {
   font-size:16px;
   line-height:2em;
+  text-align: justify;
   letter-spacing:1px;
 }
 
@@ -146,6 +151,7 @@ export default `/* 段落，下方未标注标签参数均同此处
 #nice table tr td {
   font-size:14px;
   line-height:2em;
+  text-align: justify;
   letter-spacing:1px;
   color:#333;
 }
