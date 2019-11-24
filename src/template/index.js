@@ -1,6 +1,7 @@
 import custom from "./markdown/custom";
 import normal from "./markdown/normal";
 import simple from "./markdown/simple";
+import math3ma from "./markdown/math3ma";
 
 import content from "./content.md";
 
@@ -18,6 +19,7 @@ export default {
     normal,
     custom,
     simple,
+    math3ma,
   },
   code: {
     atomOneDark,

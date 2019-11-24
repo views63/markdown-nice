@@ -14,7 +14,7 @@ export default `/* 段落，下方未标注标签参数均同此处
   line-height:2em;
   text-align: justify;
   letter-spacing:1px;
-  margin:28px 0;
+  margin:2em 0;
 }
 
 /* 一级标题 */
@@ -23,7 +23,7 @@ export default `/* 段落，下方未标注标签参数均同此处
   line-height:2em;
   text-align: justify;
   letter-spacing:1px;
-  margin:28px 0;
+  margin:2em 0;
   font-weight: bold;
 }
 
@@ -33,7 +33,7 @@ export default `/* 段落，下方未标注标签参数均同此处
   line-height:2em;
   text-align: justify;
   letter-spacing:1px;
-  margin:28px 0;
+  margin:2em 0;
   font-weight: bold;
 }
 
@@ -44,7 +44,7 @@ export default `/* 段落，下方未标注标签参数均同此处
   line-height:2em;
   text-align: justify;
   letter-spacing:1px;
-  margin:28px 0;
+  margin:2em 0;
   font-weight: bold;
 }
 

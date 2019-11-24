@@ -32,7 +32,7 @@ export default `/*自定义样式，实时生效*/
 #nice h1 {
   padding:0;
   font-size:18px;
-  margin: 28px 0;
+  margin:28px 0;
   line-height:2em;
   text-align: justify;
   letter-spacing:1px;
@@ -71,7 +71,7 @@ export default `/*自定义样式，实时生效*/
  /* 二级标题 */
 #nice h2 {
   font-size:16px;
-  margin: 28px 0;
+  margin:28px 0;
 	border-bottom: 2px solid rgb(227, 227, 227);
 	background-color: rgb(255, 255, 255);
   height: 32px;
