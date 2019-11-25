@@ -152,6 +152,11 @@ export default `/* 自定义样式，实时生效，浏览器实时缓存 */
 /* 列表内容，不要设置li
  */
 #nice li section {
+  line-height:1.75em;
+  letter-spacing:0.12em;
+  font-size: 16px;
+  word-spacing:0.1em;
+  text-align: justify;
 }
 
 /* 引用
