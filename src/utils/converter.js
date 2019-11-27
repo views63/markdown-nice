@@ -8,6 +8,7 @@ import {
   BOX_ID,
   FONT_THEME_ID,
   MJX_DATA_FORMULA,
+  COMMENT,
 } from "./constant";
 
 export const solveWeChatMath = () => {
@@ -135,6 +136,18 @@ export const solveHtml = () => {
     dict[key] = value;
     return value;
   });
+
+  const chineseBrackets = /（.+?）/g;
+  res = res.replace(chineseBrackets, (matched) => {
+    const value = '<span style="color:#888888;">' + matched + "</span>";
+    return value;
+  });
+
+  for (let index = 0; index < COMMENT.length; index++) {
+    const kv = COMMENT[index];
+    res = res.replace(kv.key, kv.value);
+  }
+
   return res;
 };
 
