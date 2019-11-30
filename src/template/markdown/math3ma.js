@@ -1,4 +1,7 @@
-export default `/* 自定义样式，实时生效，浏览器实时缓存 */
+export default `
+/* comment
+(（[^\\n]+?）),<span style="color:#888888;">$1</span>
+*/
 
 /* 全局属性
  * 页边距 padding: 30px;

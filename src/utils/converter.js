@@ -137,15 +137,22 @@ export const solveHtml = () => {
     return value;
   });
 
-  const chineseBrackets = /（.+?）/g;
-  res = res.replace(chineseBrackets, (matched) => {
-    const value = '<span style="color:#888888;">' + matched + "</span>";
-    return value;
-  });
+  const commentReg = /\/\* comment\n(.+?)\n\*\//;
+  const comment = markdownStyle.match(commentReg);
 
-  for (let index = 0; index < COMMENT.length; index++) {
-    const kv = COMMENT[index];
-    res = res.replace(kv.key, kv.value);
+  if (comment != null) {
+    const ctxs = comment[1].split(",");
+    if (ctxs.length < 2 && ctxs.length % 2 === 1) {
+      return res;
+    }
+
+    const endIndex = ctxs.length - 1;
+    for (let idx = 0; idx < endIndex; idx += 2) {
+      const key = ctxs[idx].trim();
+      const value = ctxs[idx + 1].trim();
+      const keyReg = new RegExp(key);
+      res = res.replace(keyReg, value);
+    }
   }
 
   return res;

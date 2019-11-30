@@ -70,8 +70,6 @@ export const TEMPLATE_OPTIONS = [
   },
 ];
 
-export const COMMENT = [];
-
 export const TEMPLATE_CUSTOM_NUM = TEMPLATE_OPTIONS.length - 1;
 
 export const CODE_OPTIONS = [

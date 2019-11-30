@@ -1,7 +1,6 @@
-export default `/*自定义样式，实时生效*/
-
+export default `
 /* comment
-（[^\\n]+?）,<span style="color:#888888;">$1</span>
+(（[^\\n]+?）),<span style="color:#888888;">$1</span>
 */
 
 #nice {

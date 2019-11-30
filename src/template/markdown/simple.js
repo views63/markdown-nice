@@ -1,4 +1,16 @@
-export default `/* 段落，下方未标注标签参数均同此处
+export default `
+/* comment
+(（[^\\n]+?）),<span style="color:#888888;">$1</span>
+*/
+/* 全局属性
+ * 页边距 padding: 30px;
+ * 全文字体 font-family: ptima-Regular;
+ * 英文换行 word-break: break-all;
+ */
+#nice {
+}
+
+/* 段落，下方未标注标签参数均同此处
  * 上边距 margin-top: 5px;
  * 下边距 margin-bottom: 5px;
  * 行高 line-height: 26px;
