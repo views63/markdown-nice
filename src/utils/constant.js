@@ -58,10 +58,9 @@ export const TEMPLATE_OPTIONS = [
     author: "",
   },
   {
-    id: "cuteGreen",
-    name: "萌绿",
-    author: "koala",
-    isNew: true,
+    id: "scienceBlue",
+    name: "scienceBlue",
+    author: "",
   },
   {
     id: "custom",
