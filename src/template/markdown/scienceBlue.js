@@ -27,6 +27,7 @@ export default `
   line-height:1.75;
   letter-spacing:0.1em;
   font-size: 15px;
+  margin:28px 0;
 }
 
 /* 一级标题 */
@@ -74,11 +75,13 @@ export default `
 #nice h3 {
 	font-size: 18px;
  	color: #0e88eb;
+  margin: 28px 0;
 }
 
 /* 三级标题内容 */
 #nice h3 span {
   font-size: 18px;
+  letter-spacing:0.1em;
   color: #0e88eb;
 }
 
@@ -153,7 +156,6 @@ export default `
 #nice a {
   color: #0e88eb;
   border-bottom: 0px solid #ff3502;
-  font-family:STHeitiSC-Light;
 }
 
 /* 加粗 */
@@ -165,13 +167,13 @@ export default `
 /* 斜体 */
 #nice em {
   color: #0e88eb;
-  letter-spacing:0.3em;
+  letter-spacing:0.1em;
 }
 
 /* 加粗斜体 */
 #nice strong em {
   color: #0e88eb;
-  letter-spacing:0.3em;
+  letter-spacing:0.1em;
 }
 
 /* 删除线 */
@@ -201,7 +203,6 @@ export default `
   display:block;
   margin:20px auto;
   width:85%;
-  height:100%;
   object-fit:contain;
   box-shadow:#84A1A8 0px 10px 15px;
 }
@@ -209,8 +210,7 @@ export default `
 /* 图片描述文字 */
 #nice figcaption {
   display:block;
-  font-size:12px;
-  font-family:PingFangSC-Light;
+  font-size:14px;
 }
 
 /* 行内代码 */
@@ -233,7 +233,9 @@ export default `
  */
 #nice table tr th,
 #nice table tr td {
-  font-size: 15px;
+  line-height:1.75;
+  letter-spacing:0.1em;
+  font-size: 14px;
 }
 
 /* 脚注文字 */

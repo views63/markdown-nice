@@ -137,24 +137,20 @@ export const solveHtml = () => {
     return value;
   });
 
-  const commentReg = /\/\* comment\n(.+?)\n\*\//;
+  const commentReg = /\/\* comment\n([\s\S]+?)\n\*\//m;
   const comment = markdownStyle.match(commentReg);
 
   if (comment != null) {
-    const ctxs = comment[1].split(",");
-    if (ctxs.length < 2 && ctxs.length % 2 === 1) {
-      return res;
-    }
-
-    const endIndex = ctxs.length - 1;
-    for (let idx = 0; idx < endIndex; idx += 2) {
-      const key = ctxs[idx].trim();
-      const value = ctxs[idx + 1].trim();
+    const ctxs = comment[1].split("\n");
+    for (let idx = 0; idx < ctxs.length; idx++) {
+      const kvs = ctxs[idx];
+      const kv = kvs.split(",");
+      const key = kv[0].trim();
+      const value = kv[1].trim();
       const keyReg = new RegExp(key);
       res = res.replace(keyReg, value);
     }
   }
-
   return res;
 };
 
