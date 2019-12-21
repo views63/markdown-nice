@@ -71,9 +71,7 @@ export default `
 #nice h2 {
   font-size:16px;
   margin:28px 0;
-	border-bottom: 2px solid rgb(227, 227, 227);
 	background-color: rgb(255, 255, 255);
-  height: 32px;
   color: rgb(62, 62, 62);
   counter-increment: count2;
 }
