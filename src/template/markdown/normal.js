@@ -138,7 +138,7 @@ export default `
  */
 #nice li section {
   font-size:15px;
-  line-height:2em;
+  line-height:1.75em;
   text-align: justify;
   letter-spacing:0.1em;
   color:#333;
@@ -153,6 +153,11 @@ export default `
 
 /* 引用文字 */
 #nice blockquote p {
+  font-size:15px;
+  line-height:1.75em;
+  text-align: justify;
+  letter-spacing:0.1em;
+  color:#333;
 }
 
 /* 链接
@@ -195,10 +200,13 @@ export default `
 * 居左 margin: 0 0;
 */
 #nice img {
+  max-width: 80%;
 }
 
 /* 图片描述文字 */
 #nice figcaption {
+  line-height:1.75em;
+  letter-spacing:0.1em;
 }
 
 /* 行内代码 */

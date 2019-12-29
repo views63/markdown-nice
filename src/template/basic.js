@@ -279,12 +279,9 @@ export default `/*默认样式，最佳实践*/
 #nice .block-equation {
   display:block;
   text-align: center;
-  overflow-x: auto;
 }
 
 #nice .block-equation svg {
-  max-width: 300% !important;
-  -webkit-overflow-scrolling: touch;
 }
 
 #nice .inline-equation {

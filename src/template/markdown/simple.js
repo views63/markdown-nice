@@ -99,6 +99,10 @@ export default `
 
 /* 引用文字 */
 #nice blockquote p {
+  font-size:16px;
+  line-height:2em;
+  text-align: justify;
+  letter-spacing:1px;
 }
 
 /* 链接
@@ -137,10 +141,13 @@ export default `
 * 居左 margin: 0 0;
 */
 #nice img {
+  max-width: 80%;
 }
 
 /* 图片描述文字 */
 #nice figcaption {
+  line-height:2em;
+  letter-spacing:1px;
 }
 
 /* 行内代码 */
