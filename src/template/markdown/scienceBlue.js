@@ -202,7 +202,7 @@ export default `
   border-radius:0px 0px 5px 5px;
   display:block;
   margin:20px auto;
-  width:85%;
+  max-width:85%;
   object-fit:contain;
   box-shadow:#84A1A8 0px 10px 15px;
 }
@@ -287,6 +287,10 @@ export default `
 
 /* 参考资料解释 */
 #nice .footnote-item p em {
+}
+
+#nice .block-equation {
+  font-size:15px;
 }
 
 /* 行间公式

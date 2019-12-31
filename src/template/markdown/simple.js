@@ -202,6 +202,10 @@ export default `
 #nice .footnote-item p em {
 }
 
+#nice .block-equation {
+  font-size:16px;
+}
+
 /* 行间公式
  * 最大宽度 max-width: 300% !important;
  */

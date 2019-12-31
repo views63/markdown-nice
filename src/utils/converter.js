@@ -147,7 +147,7 @@ export const solveHtml = () => {
       const kv = kvs.split(",");
       const key = kv[0].trim();
       const value = kv[1].trim();
-      const keyReg = new RegExp(key);
+      const keyReg = new RegExp(key, "g");
       res = res.replace(keyReg, value);
     }
   }
