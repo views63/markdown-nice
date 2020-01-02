@@ -40,7 +40,7 @@ export default `
 /* 一级标题 */
 #nice h1 {
   background-color:#222;/*#222;*/
-  background-image:url(https://qiniu.mdnice.com/a955f87440fd313888f75e5ff5dab2bb.png);
+  background-image:url(https://imgkr.cn-bj.ufileos.com/d29bdb5f-0139-46ae-a1b3-33917805a3e1.png);
   background-size: 80px 72px;
   background-position: center top;
   background-repeat: no-repeat;
@@ -59,13 +59,6 @@ export default `
   border-radius:3px;
 }
  
-
-/* 二级标题 */
-
-/*二级标题伪元素*/
-#nice h1:before{
-  content: "";
-}
 
 #nice h1 span {
   text-align: center;
@@ -472,7 +465,6 @@ export default `
  * 最大宽度 max-width: 300% !important;
  */
 #nice .block-equation svg {
-  max-width: 100% !important;
   color: #ffa;/*#3c70a6;*/ 
   font-family: Gyre Pagella;
   max-width: 300% !important;

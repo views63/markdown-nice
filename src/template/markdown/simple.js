@@ -141,7 +141,7 @@ export default `
 * 居左 margin: 0 0;
 */
 #nice img {
-  max-width: 80%;
+  max-width:80% !important;
 }
 
 /* 图片描述文字 */
