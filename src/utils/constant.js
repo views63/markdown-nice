@@ -7,6 +7,8 @@ export const CLIENT_SECRET =
 export const PROXY = "https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token";
 export const SM_MS_PROXY = "https://cors-anywhere.herokuapp.com/https://sm.ms/api/upload";
 export const ACCESS_TOKEN = "ACCESS_TOKEN";
+export const MJX_DATA_FORMULA = "data-formula";
+export const MJX_DATA_FORMULA_TYPE = "data-formula-type";
 
 export const CONTENT = "content";
 export const STYLE = "style";
@@ -15,105 +17,52 @@ export const CODE_NUM = "code_num";
 export const PREVIEW_TYPE = "preview_type";
 export const IS_SYNC_SCROLL = "is_sync_scroll";
 export const IS_CONTAIN_IMG_NAME = "is_contain_img_name";
-export const VERSION = "version";
-export const IS_PASTE_CHECK_OPEN = "is_paste_check_open";
-export const IS_PRETTIER_OPEN = "is_prettier_open";
+export const NEWEST_VERSION = "newest_version";
 export const ALIOSS_IMAGE_HOSTING = "alioss_image_hosting";
 export const QINIUOSS_IMAGE_HOSTING = "qiniuoss_image_hosting";
 export const IMAGE_HOSTING_TYPE = "image_hosting_type";
-export const IMAGE_HOSTING_TYPE_OPTIONS = [
-  {value: "SM.MS", label: "SM.MS"},
-  {value: "阿里云", label: "阿里云"},
-  {value: "七牛云", label: "七牛云"},
-];
-
 export const BASIC_THEME_ID = "basic-theme";
 export const CODE_THEME_ID = "code-theme";
 export const MARKDOWN_THEME_ID = "markdown-theme";
 export const FONT_THEME_ID = "font-theme";
 export const LAYOUT_ID = "nice";
 export const BOX_ID = "nice-rich-text-box";
+export const IMAGE_HOSTING_NAMES = {
+  smms: "SM.MS",
+  aliyun: "阿里云",
+  qiniuyun: "七牛云",
+};
+
+export const RIGHT_SYMBOL = "✔️";
+export const EXPORT_FILENAME_SUFFIX = ".md";
 
 export const STYLE_LABELS = ["basic-theme", "markdown-theme", "code-theme", "font-theme"];
 
 export const ENTER_DELAY = 0.5;
 export const LEAVE_DELAY = 0.0;
 
+export const COMMENT = [];
+
 export const TEMPLATE_OPTIONS = [
   {
     id: "normal",
     name: "默认主题",
-    author: "zhning12",
-  },
-  {
-    id: "orangeHeart",
-    name: "橙心",
-    author: "zhning12",
-  },
-  {
-    id: "ink",
-    name: "墨黑",
-    author: "Mayandev",
-  },
-  {
-    id: "purple",
-    name: "姹紫",
-    author: "djmaxwow",
-  },
-  {
-    id: "cyan",
-    name: "嫩青",
-    author: "画手",
-  },
-  {
-    id: "green",
-    name: "绿意",
-    author: "夜尽天明",
-  },
-  {
-    id: "red",
-    name: "红绯",
-    author: "HeyRain",
-  },
-  {
-    id: "wechatFormat",
-    name: "WeChat-Format",
-    author: "画手",
-  },
-  {
-    id: "blue",
-    name: "蓝莹",
-    author: "谭淞宸",
-  },
-  {
-    id: "scienceBlue",
-    name: "科技蓝",
-    author: "夜尽天明",
-  },
-  {
-    id: "blueCyan",
-    name: "兰青",
-    author: "Krahets",
-  },
-  {
-    id: "shanchui",
-    name: "山吹",
-    author: "ElyhG",
-  },
-  {
-    id: "blueMountain",
-    name: "前端之巅同款",
-    author: "HeyRain",
-  },
-  {
-    id: "geekBlack",
-    name: "极客黑",
-    author: "hyper-xx",
+    author: "",
   },
   {
     id: "simple",
     name: "简",
-    author: "aco",
+    author: "",
+  },
+  {
+    id: "math3ma",
+    name: "math3ma",
+    author: "",
+  },
+  {
+    id: "scienceBlue",
+    name: "scienceBlue",
+    author: "",
   },
   {
     id: "custom",
@@ -155,12 +104,25 @@ export const CODE_OPTIONS = [
   },
 ];
 
-export const VERSION_NUM = "1.4.9";
-
-export const VERSION_TIMELINE = [
-  "2019-12-28 修复同步滚动和图片包含名称问题",
-  "2019-12-25 增加本地历史功能，浏览器刷新后以前版本不丢失",
-  "2019-12-21 修复代码块换行问题，新增上传时包含图片名选项",
-  "2019-12-08 新增「图壳」免费图床，可以长期存储并且排版成功率高！下一个版本将移除其他图床的支持！仅提供组件配置项",
-  "2019-11-16 新增全屏沉浸式编辑（点击全屏按钮可查看）",
+export const SITDOWN_OPTIONS = [
+  {
+    key: "wechat",
+    value: "微信公众号 - https://mp.weixin.qq.com/",
+  },
+  {
+    key: "zhihu",
+    value: "知乎专栏 - https://zhuanlan.zhihu.com/",
+  },
+  {
+    key: "juejin",
+    value: "掘金 - https://juejin.im/post/",
+  },
+  {
+    key: "csdn",
+    value: "CSDN - https://blog.csdn.net/",
+  },
+  {
+    key: "other",
+    value: "其他",
+  },
 ];
