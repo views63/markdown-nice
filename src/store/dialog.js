@@ -1,5 +1,4 @@
 import {observable, action} from "mobx";
-import {VERSION, VERSION_NUM} from "../utils/constant";
 
 class Dialog {
   @observable isImageOpen = false;
@@ -12,9 +11,11 @@ class Dialog {
 
   @observable isFormOpen = false;
 
-  @observable isSettingOpen = false;
-
   @observable isHistoryOpen = false;
+
+  @observable isSearchOpen = false;
+
+  @observable isSitDownOpen = false;
 
   @action
   setImageOpen = (isImageOpen) => {
@@ -42,22 +43,21 @@ class Dialog {
   };
 
   @action
-  setSettingOpen = (isSettingOpen) => {
-    this.isSettingOpen = isSettingOpen;
+  setHistoryOpen = (isHistoryOpen) => {
+    this.isHistoryOpen = isHistoryOpen;
   };
 
   @action
-  setHistoryOpen = (isHistoryOpen) => {
-    this.isHistoryOpen = isHistoryOpen;
+  setSearchOpen = (isSearchOpen) => {
+    this.isSearchOpen = isSearchOpen;
+  };
+
+  @action
+  setSitDownOpen = (isSitDownOpen) => {
+    this.isSitDownOpen = isSitDownOpen;
   };
 }
 
 const store = new Dialog();
-
-const isVersionDiff = localStorage.getItem(VERSION) !== VERSION_NUM;
-if (isVersionDiff) {
-  store.isVersionOpen = true;
-  localStorage.setItem(VERSION, VERSION_NUM);
-}
 
 export default store;
