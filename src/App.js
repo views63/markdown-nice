@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import CodeMirror from "@uiw/react-codemirror";
+import "codemirror/addon/search/searchcursor";
 import "codemirror/keymap/sublime";
 import "antd/dist/antd.css";
 import {observer, inject} from "mobx-react";
@@ -7,20 +8,31 @@ import classnames from "classnames";
 
 import Dialog from "./layout/Dialog";
 import Navbar from "./layout/Navbar";
+import Sidebar from "./layout/Sidebar";
 import StyleEditor from "./layout/StyleEditor";
+import EditorMenu from "./layout/EditorMenu";
+import SearchBox from "./component/SearchBox";
 
 import "./App.css";
 import "./utils/mdMirror.css";
 
-import {LAYOUT_ID, BOX_ID} from "./utils/constant";
-import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
+import {
+  LAYOUT_ID,
+  BOX_ID,
+  IMAGE_HOSTING_NAMES,
+  IMAGE_HOSTING_TYPE,
+  MJX_DATA_FORMULA,
+  MJX_DATA_FORMULA_TYPE,
+} from "./utils/constant";
+import {markdownParser, markdownParserWechat, updateMathjax, throttle} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
 import {uploadAdaptor} from "./utils/imageHosting";
-import bindHotkeys, {betterTab} from "./utils/hotkey";
+import bindHotkeys, {betterTab, rightClick} from "./utils/hotkey";
 
 @inject("content")
 @inject("navbar")
+@inject("view")
 @inject("dialog")
 @inject("imageHosting")
 @observer
@@ -41,6 +53,7 @@ class App extends Component {
         tex: {
           inlineMath: [["$", "$"]],
           displayMath: [["$$", "$$"]],
+          tags: "ams",
         },
         svg: {
           fontCache: "none",
@@ -54,9 +67,11 @@ class App extends Component {
                 for (const math of doc.math) {
                   const cls = math.display ? "block-equation" : "inline-equation";
                   math.typesetRoot.className = cls;
-                  math.typesetRoot.setAttribute("data", math.math);
+                  math.typesetRoot.setAttribute(MJX_DATA_FORMULA, math.math);
+                  math.typesetRoot.setAttribute(MJX_DATA_FORMULA_TYPE, cls);
                 }
               },
+              this.addContainer,
             ],
           },
         },
@@ -66,6 +81,7 @@ class App extends Component {
       pluginCenter.mathjax = true;
     } catch (e) {
       console.log(e);
+      pluginCenter.mathjax = false;
     }
     this.setEditorContent();
     this.setCustomImageHosting();
@@ -73,13 +89,7 @@ class App extends Component {
 
   componentDidUpdate() {
     if (pluginCenter.mathjax) {
-      try {
-        updateMathjax();
-      } catch (e) {
-        this.mathJaxTimer = setTimeout(() => {
-          updateMathjax();
-        }, 1000);
-      }
+      throttle(updateMathjax, 1500);
     }
   }
 
@@ -88,24 +98,42 @@ class App extends Component {
     document.removeEventListener("webkitfullscreenchange", this.solveScreenChange);
     document.removeEventListener("mozfullscreenchange", this.solveScreenChange);
     document.removeEventListener("MSFullscreenChange", this.solveScreenChange);
-    this.mathJaxTimer && clearTimeout(this.mathJaxTimer);
   }
 
   setCustomImageHosting = () => {
-    // const {useImageHosting, imageHostingUrl, imageHostingName} = this.props;
-    // if (useImageHosting) {
-    //   if (imageHostingUrl) {
-    //     this.props.imageHosting.setHostingUrl(imageHostingUrl);
-    //   }
-    //   if (imageHostingName) {
-    //     this.props.imageHosting.setHostingName(imageHostingName);
-    //   }
-    // }
-    const host = this.props.useImageHosting;
-    if (host) {
-      this.props.imageHosting.setHostingUrl(host.url);
-      this.props.imageHosting.setHostingName(host.name);
-      this.props.imageHosting.addImageHosting(host.name);
+    if (this.props.useImageHosting === undefined) {
+      return;
+    }
+    const {url, name, isSmmsOpen, isQiniuyunOpen, isAliyunOpen} = this.props.useImageHosting;
+    if (name) {
+      this.props.imageHosting.setHostingUrl(url);
+      this.props.imageHosting.setHostingName(name);
+      this.props.imageHosting.addImageHosting(name);
+    }
+    if (isSmmsOpen) {
+      this.props.imageHosting.addImageHosting(IMAGE_HOSTING_NAMES.smms);
+    }
+    if (isAliyunOpen) {
+      this.props.imageHosting.addImageHosting(IMAGE_HOSTING_NAMES.aliyun);
+    }
+    if (isQiniuyunOpen) {
+      this.props.imageHosting.addImageHosting(IMAGE_HOSTING_NAMES.qiniuyun);
+    }
+
+    // 第一次进入没有默认图床时
+    if (window.localStorage.getItem(IMAGE_HOSTING_TYPE) === null) {
+      let type;
+      if (name) {
+        type = name;
+      } else if (isSmmsOpen) {
+        type = IMAGE_HOSTING_NAMES.smms;
+      } else if (isAliyunOpen) {
+        type = IMAGE_HOSTING_NAMES.aliyun;
+      } else if (isQiniuyunOpen) {
+        type = IMAGE_HOSTING_NAMES.qiniuyun;
+      }
+      this.props.imageHosting.setType(type);
+      window.localStorage.setItem(IMAGE_HOSTING_TYPE, type);
     }
   };
 
@@ -121,8 +149,8 @@ class App extends Component {
   }
 
   solveScreenChange = () => {
-    const {isImmersiveEditing} = this.props.navbar;
-    this.props.navbar.setImmersiveEditing(!isImmersiveEditing);
+    const {isImmersiveEditing} = this.props.view;
+    this.props.view.setImmersiveEditing(!isImmersiveEditing);
   };
 
   getInstance = (instance) => {
@@ -194,27 +222,44 @@ class App extends Component {
     }
   };
 
-  render() {
-    const {codeNum, isStyleEditorOpen, previewType, isImmersiveEditing} = this.props.navbar;
+  addContainer(math, doc) {
+    const tag = "span";
+    const spanClass = math.display ? "span-block-equation" : "span-inline-equation";
+    const cls = math.display ? "block-equation" : "inline-equation";
+    math.typesetRoot.className = cls;
+    math.typesetRoot.setAttribute(MJX_DATA_FORMULA, math.math);
+    math.typesetRoot = doc.adaptor.node(tag, {class: spanClass, style: "cursor:pointer"}, [math.typesetRoot]);
+  }
 
-    const parseHtml =
-      codeNum === 0
-        ? markdownParserWechat.render(this.props.content.content)
-        : markdownParser.render(this.props.content.content);
+  render() {
+    const {codeNum, previewType} = this.props.navbar;
+    const {isEditAreaOpen, isPreviewAreaOpen, isStyleEditorOpen, isImmersiveEditing} = this.props.view;
+
+    let content = this.props.content.content.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    content = content.replace(/<strong>\*(.+?)<\/strong>\*/g, "<em><strong>$1</strong></em>");
+    content = content.replace(/\*(.+?)\*/g, "<em>$1</em>");
+    const parseHtml = codeNum === 0 ? markdownParserWechat.render(content) : markdownParser.render(content);
 
     const mdEditingClass = classnames({
       "nice-md-editing": !isImmersiveEditing,
       "nice-md-editing-immersive": isImmersiveEditing,
+      "nice-md-editing-hide": !isEditAreaOpen,
     });
 
     const styleEditingClass = classnames({
       "nice-style-editing": true,
-      "nice-not-md-hide": isImmersiveEditing,
+      "nice-style-editing-hide": isImmersiveEditing,
     });
 
     const richTextClass = classnames({
       "nice-marked-text": true,
-      "nice-not-md-hide": isImmersiveEditing,
+      "nice-marked-text-pc": previewType === "pc",
+      "nice-marked-text-hide": isImmersiveEditing || !isPreviewAreaOpen,
+    });
+
+    const richTextBoxClass = classnames({
+      "nice-wx-box": true,
+      "nice-wx-box-pc": previewType === "pc",
     });
 
     const textContainerClass = classnames({
@@ -229,6 +274,7 @@ class App extends Component {
             <Navbar title={defaultTitle} />
             <div className={textContainerClass}>
               <div id="nice-md-editor" className={mdEditingClass} onMouseOver={(e) => this.setCurrentIndex(1, e)}>
+                <SearchBox />
                 <CodeMirror
                   value={this.props.content.content}
                   options={{
@@ -237,7 +283,11 @@ class App extends Component {
                     mode: "markdown",
                     lineWrapping: true,
                     lineNumbers: false,
-                    extraKeys: {...bindHotkeys(this.props.content, this.props.dialog), Tab: betterTab},
+                    extraKeys: {
+                      ...bindHotkeys(this.props.content, this.props.dialog),
+                      Tab: betterTab,
+                      RightClick: rightClick,
+                    },
                   }}
                   onChange={this.handleChange}
                   onScroll={this.handleScroll}
@@ -249,19 +299,17 @@ class App extends Component {
                 />
               </div>
               <div id="nice-rich-text" className={richTextClass} onMouseOver={(e) => this.setCurrentIndex(2, e)}>
+                <Sidebar />
                 <div
                   id={BOX_ID}
-                  className="nice-wx-box"
+                  className={richTextBoxClass}
                   onScroll={this.handleScroll}
-                  style={{width: previewType === "pc" ? "100%" : 375}}
                   ref={(node) => {
                     this.previewContainer = node;
                   }}
                 >
                   <section
                     id={LAYOUT_ID}
-                    data-tool="mdnice编辑器"
-                    data-website="https://www.mdnice.com"
                     dangerouslySetInnerHTML={{
                       __html: parseHtml,
                     }}
@@ -272,13 +320,14 @@ class App extends Component {
                 </div>
               </div>
 
-              {isStyleEditorOpen ? (
+              {isStyleEditorOpen && (
                 <div id="nice-style-editor" className={styleEditingClass}>
                   <StyleEditor />
                 </div>
-              ) : null}
+              )}
 
               <Dialog />
+              <EditorMenu />
             </div>
           </div>
         )}
