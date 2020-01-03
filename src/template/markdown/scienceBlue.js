@@ -1,4 +1,7 @@
-export default `/*自定义样式，实时生效*/
+export default `
+/* comment
+(（[^\\n]+?）),<span style="color:#888888;">$1</span>
+*/
 
 /* 全局属性
  * 页边距 padding:30px;
@@ -6,7 +9,7 @@ export default `/*自定义样式，实时生效*/
  * 英文换行 word-break:break-all;
  */
 #nice {
-  font-family:PingFangSC-Light;
+  margin: 0 8px;
 }
 
 /* 段落，下方未标注标签参数均同此处
@@ -21,11 +24,10 @@ export default `/*自定义样式，实时生效*/
  * 首行缩进 text-indent:2em;
  */
 #nice p {
-  margin:10px 10px;
   line-height:1.75;
-  letter-spacing:0.2em;
+  letter-spacing:0.1em;
   font-size: 15px;
-  word-spacing:0.1em;
+  margin:28px 0;
 }
 
 /* 一级标题 */
@@ -33,20 +35,17 @@ export default `/*自定义样式，实时生效*/
   border-bottom: 2px solid #0e88eb;
   font-size: 1.4em;
   text-align: center;
+  margin: 28px 0;
 }
 
 /* 一级标题内容 */
 #nice h1 span {
   font-size: 1.4em;
-  display:inline-block;
+  letter-spacing:0.1em;
+  line-height:1.5em;
   font-weight: bold;
-  //background: #0e88eb;
   color:#ffffff;
   color: #0e88eb;
-  padding:3px 10px 1px;
-  border-top-right-radius:3px;
-  border-top-left-radius:3px;
-  margin-right:3px;
 }
 
 /* 一级标题修饰 请参考有实例的主题 */
@@ -56,16 +55,15 @@ export default `/*自定义样式，实时生效*/
 /* 二级标题 */
 #nice h2 {
   text-align:left;
-  margin:20px 10px 0px 0px;
+  margin: 28px 0;
 }
 
 /* 二级标题内容 */
 #nice h2 span {
-  font-family:STHeitiSC-Light;
   font-size: 22px;
   color:#0e88eb;
   font-weight:bolder;
-  display:inline-block;
+  letter-spacing:0.1em;
   padding-left:10px;
   border-left:5px solid #0e88eb;
 }
@@ -78,11 +76,13 @@ export default `/*自定义样式，实时生效*/
 #nice h3 {
 	font-size: 18px;
  	color: #0e88eb;
+  margin: 28px 0;
 }
 
 /* 三级标题内容 */
 #nice h3 span {
   font-size: 18px;
+  letter-spacing:0.1em;
   color: #0e88eb;
 }
 
@@ -105,6 +105,8 @@ export default `/*自定义样式，实时生效*/
 /* 列表内容，不要设置li
  */
 #nice li section {
+  line-height:1.75;
+  letter-spacing:0.1em;
   font-size: 15px;
 }
 
@@ -124,11 +126,10 @@ export default `/*自定义样式，实时生效*/
   box-shadow:#84A1A8 0px 10px 15px;
 }
 #nice blockquote:before {
-  content:"★ ";
+  content:"“";
   display:inline;
   color: #0e88eb;
-  font-size:4em;
-  font-family:Arial,serif;
+  font-size:3em;
   line-height:1em;
   font-weight:700;
 }
@@ -136,8 +137,9 @@ export default `/*自定义样式，实时生效*/
 /* 引用文字 */
 #nice blockquote p {
   color: #0e88eb;
-  font-size:15px;
-  display:inline;
+  line-height:1.75;
+  letter-spacing:0.1em;
+  font-size: 15px;
 }
 #nice blockquote:after {
   content:"”";
@@ -146,7 +148,7 @@ export default `/*自定义样式，实时生效*/
   color:#0e88eb;
   font-size:3em;
   line-height:1em;
-  font-weight:500;
+  font-weight:700;
 }
 
 /* 链接 
@@ -155,7 +157,6 @@ export default `/*自定义样式，实时生效*/
 #nice a {
   color: #0e88eb;
   border-bottom: 0px solid #ff3502;
-  font-family:STHeitiSC-Light;
 }
 
 /* 加粗 */
@@ -167,13 +168,13 @@ export default `/*自定义样式，实时生效*/
 /* 斜体 */
 #nice em {
   color: #0e88eb;
-  letter-spacing:0.3em;
+  letter-spacing:0.1em;
 }
 
 /* 加粗斜体 */
 #nice strong em {
   color: #0e88eb;
-  letter-spacing:0.3em;
+  letter-spacing:0.1em;
 }
 
 /* 删除线 */
@@ -202,8 +203,7 @@ export default `/*自定义样式，实时生效*/
   border-radius:0px 0px 5px 5px;
   display:block;
   margin:20px auto;
-  width:85%;
-  height:100%;
+  max-width:85% !important;
   object-fit:contain;
   box-shadow:#84A1A8 0px 10px 15px;
 }
@@ -211,8 +211,7 @@ export default `/*自定义样式，实时生效*/
 /* 图片描述文字 */
 #nice figcaption {
   display:block;
-  font-size:12px;
-  font-family:PingFangSC-Light;
+  font-size:14px;
 }
 
 /* 行内代码 */
@@ -235,7 +234,9 @@ export default `/*自定义样式，实时生效*/
  */
 #nice table tr th,
 #nice table tr td {
-  font-size: 15px;
+  line-height:1.75;
+  letter-spacing:0.1em;
+  font-size: 14px;
 }
 
 /* 脚注文字 */
@@ -287,6 +288,10 @@ export default `/*自定义样式，实时生效*/
 
 /* 参考资料解释 */
 #nice .footnote-item p em {
+}
+
+#nice .block-equation {
+  font-size:15px;
 }
 
 /* 行间公式
