@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Form, Input} from "antd";
+import {Input, Form} from "antd";
 import {ALIOSS_IMAGE_HOSTING} from "../../utils/constant";
 
 const formItemLayout = {
@@ -73,13 +73,8 @@ class AliOSS extends Component {
           />
         </Form.Item>
         <Form.Item label="提示" style={style.formItem}>
-          <span>配置好图床信息后请在右上角进行切换</span>
-          <br />
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://docs.mdnice.com/#/%E9%98%BF%E9%87%8C%E4%BA%91%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA"
-          >
+          <span>配置后请在右上角进行切换，</span>
+          <a rel="noopener noreferrer" target="_blank" href="https://docs.mdnice.com/#/aliyun-image-hosting">
             阿里云图床配置文档
           </a>
         </Form.Item>
