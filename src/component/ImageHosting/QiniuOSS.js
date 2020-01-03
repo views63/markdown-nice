@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {observer, inject} from "mobx-react";
-import {Form, Input, Select} from "antd";
+import {Input, Select, Form} from "antd";
 import {QINIUOSS_IMAGE_HOSTING} from "../../utils/constant";
 
 const {Option} = Select;
@@ -101,13 +101,8 @@ class QiniuOSS extends Component {
           <Input value={namespace} onChange={this.namespaceChange} placeholder="例如：image/" />
         </Form.Item>
         <Form.Item label="提示" style={style.formItem}>
-          <span>配置好图床信息后请在右上角进行切换</span>
-          <br />
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://docs.mdnice.com/#/%E4%B8%83%E7%89%9B%E4%BA%91%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA"
-          >
+          <span>配置后请在右上角进行切换，</span>
+          <a rel="noopener noreferrer" target="_blank" href="https://docs.mdnice.com/#/qiniu-image-hosting">
             七牛云图床配置文档
           </a>
         </Form.Item>
