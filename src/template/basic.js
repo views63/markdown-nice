@@ -1,67 +1,11 @@
 export default `/*默认样式，最佳实践*/
 
-/*全局属性*/
-#nice {
-  font-size: 16px;
-  color: black;
-  padding: 10px;
-  line-height: 1.6;
-  word-spacing: 0px;
-  letter-spacing: 0px;
-  word-break: break-word;
-  word-wrap: break-word;
-  text-align: left;
-  font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-/*段落*/
-#nice p {
-  font-size: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin: 0;
-  line-height: 26px;
-  color: black;
-}
-
-/*标题*/
-#nice h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  color: black;
-}
-#nice h1 {
-  font-size: 28px;
-}
-#nice h2 {
-  font-size: 24px;
-}
-#nice h3 {
-  font-size: 20px;
-}
-#nice h4 {
-  font-size: 18px;
-}
-#nice h5 {
-  font-size: 16px;
-}
-#nice h6 {
-  font-size: 16px;
-}
-
 /*列表*/
 #nice ul,
-ol {
+#nice ol {
   margin-top: 8px;
   margin-bottom: 8px;
   padding-left: 25px;
-  color: black;
 }
 #nice ul {
   list-style-type: disc;
@@ -75,12 +19,6 @@ ol {
 }
 
 #nice li section {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  line-height: 26px;
-  text-align: left;
-  color: rgb(1,1,1); /* 只要是纯黑色微信编辑器就会把color这个属性吞掉。。。*/
-  font-weight: 500;
 }
 
 /*引用*/
@@ -102,13 +40,11 @@ ol {
 
 #nice blockquote p {
   margin: 0px;
-  color: black;
   line-height: 26px;
 }
 
 #nice .table-of-contents a {
   border: none;
-  color: black;
   font-weight: normal;
 }
 
@@ -124,25 +60,21 @@ ol {
 /*加粗*/
 #nice strong {
   font-weight: bold;
-  color: black;
 }
 
 /*斜体*/
 #nice em {
   font-style: italic;
-  color: black;
 }
 
 /*加粗斜体*/
 #nice strong em {
   font-weight: bold;
-  color: black;
 }
 
 /*删除线*/
 #nice del {
   font-style: italic;
-  color: black;
 }
 
 /*分隔线*/
@@ -172,7 +104,8 @@ ol {
 }
 
 /*行内代码*/
-#nice p code, li code{
+#nice p code,
+#nice li code {
   font-size: 14px;
   word-wrap: break-word;
   padding: 2px 4px;
@@ -188,21 +121,20 @@ ol {
 #nice img {
   display: block;
   margin: 0 auto;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
 }
 
 /*图片*/
 #nice figure {
-  margin: 0;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 28px 0;
 }
 
 /*图片描述文字*/
 #nice figcaption {
   margin-top: 5px;
   text-align: center;
-  color: #888;
+  color: #888888;
   font-size: 14px;
 }
 
@@ -226,7 +158,7 @@ ol {
 }
 
 #nice table tr th,
-table tr td {
+#nice table tr td {
   font-size: 16px;
   border: 1px solid #ccc;
   padding: 5px 10px;
@@ -269,7 +201,6 @@ table tr td {
   list-style-type: none;
   text-align: right;
   line-height: 26px;
-  color: black;
   margin: 0;
 }
 #nice .code-snippet__fix .code-snippet__line-index li::before {
@@ -331,7 +262,6 @@ table tr td {
   padding: 0px;
   margin: 0;
   line-height: 26px;
-  color: black;
   word-break:break-all;
   width: calc(100%-50)
 }
@@ -349,14 +279,9 @@ table tr td {
 #nice .block-equation {
   display:block;
   text-align: center;
-  overflow: auto;
-  display: block;
-  -webkit-overflow-scrolling: touch;
 }
 
 #nice .block-equation svg {
-  max-width: 300% !important;
-  -webkit-overflow-scrolling: touch;
 }
 
 #nice .inline-equation {
@@ -389,5 +314,9 @@ table tr td {
 
 #nice .imageflow-img {
   display: inline-block;
+}
+
+.nice-suffix-juejin-container {
+  margin-top: 20px !important;
 }
 `;
