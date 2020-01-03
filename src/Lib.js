@@ -12,6 +12,7 @@ import userInfo from "./store/userInfo";
 import navbar from "./store/navbar";
 import dialog from "./store/dialog";
 import imageHosting from "./store/imageHosting";
+import view from "./store/view";
 
 import {isPC} from "./utils/helper";
 import appContext from "./utils/appContext";
@@ -42,10 +43,17 @@ class Lib extends Component {
     const {defaultTitle, defaultText, onTextChange, useImageHosting} = this.props;
     const appCtx = {
       defaultTitle,
+      useImageHosting,
     };
-
     return (
-      <Provider content={content} userInfo={userInfo} navbar={navbar} dialog={dialog} imageHosting={imageHosting}>
+      <Provider
+        content={content}
+        userInfo={userInfo}
+        navbar={navbar}
+        dialog={dialog}
+        imageHosting={imageHosting}
+        view={view}
+      >
         {isPC() ? (
           <appContext.Provider value={appCtx}>
             <App defaultText={defaultText} onTextChange={onTextChange} useImageHosting={useImageHosting} />
@@ -54,11 +62,12 @@ class Lib extends Component {
           <Result
             icon={<SvgIcon name="smile" style={style.svgIcon} />}
             title="请使用 PC 端打开排版工具"
-            subTitle="更多 Markdown Nice 信息，请扫码关注公众号「牧码啦」"
+            subTitle="更多 Markdown Nice 信息，请扫码关注公众号「编程如画」"
             extra={
               <img
                 alt=""
-                src="https://draw-wechat.oss-cn-hangzhou.aliyuncs.com/%E4%BA%8C%E7%BB%B4%E7%A0%81_20190823124950.gif"
+                style={{width: "100%"}}
+                src="https://imgkr.cn-bj.ufileos.com/22cf98bd-3f85-45fc-9df7-e6b2808329d0.png"
               />
             }
           />
@@ -80,7 +89,13 @@ Lib.defaultProps = {
   defaultText: "",
   onTextChange: () => {},
   // eslint-disable-next-line react/default-props-match-prop-types
-  imageHosting: null,
+  useImageHosting: {
+    url: "",
+    name: "",
+    isSmmsOpen: true,
+    isQiniuyunOpen: true,
+    isAliyunOpen: true,
+  },
 };
 Lib.propTypes = {
   defaultTitle: PropTypes.string,
@@ -90,6 +105,9 @@ Lib.propTypes = {
   useImageHosting: PropTypes.shape({
     url: PropTypes.string,
     name: PropTypes.string,
+    isSmmsOpen: PropTypes.bool,
+    isQiniuyunOpen: PropTypes.bool,
+    isAliyunOpen: PropTypes.bool,
   }),
 };
 
