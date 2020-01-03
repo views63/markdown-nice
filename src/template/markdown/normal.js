@@ -1,9 +1,10 @@
-export default `/* 全局属性
- * 页边距 padding: 30px;
- * 全文字体 font-family: ptima-Regular;
- * 英文换行 word-break: break-all;
- */
+export default `
+/* comment
+(（[^\\n]+?）),<span style="color:#888888;">$1</span>
+*/
+
 #nice {
+  margin: 0 8px;
 }
 
 /* 段落，下方未标注标签参数均同此处
@@ -18,10 +19,24 @@ export default `/* 全局属性
  * 首行缩进 text-indent: 2em;
  */
 #nice p {
+  font-size:15px;
+  line-height:2em;
+  text-align: justify;
+  letter-spacing:0.1em;
+  margin:28px 0;
+  color:#333;
 }
 
 /* 一级标题 */
 #nice h1 {
+  padding:0;
+  font-size:18px;
+  margin:28px 0;
+  line-height:2em;
+  text-align: justify;
+  letter-spacing:1px;
+  text-align:center;
+  font-weight: bold;
 }
 
 /* 一级标题内容 */
@@ -29,23 +44,74 @@ export default `/* 全局属性
 }
 
 /* 一级标题修饰 请参考有实例的主题 */
-#nice h1:after {
+#nice h1:before {
+  content:"";
+  background-image:url(https://dev.tencent.com/u/views63/p/transfer/git/raw/master/20191023.png);
+  background-repeat:no-repeat;
+  width:60px;
+  height:30px;
+  background-size:60px 26.82px;
+	float:left;
+  margin-top:8px;
 }
 
-/* 二级标题 */
+/* 一级标题修饰 请参考有实例的主题 */
+#nice h1:after {
+  content:"";
+  background-image:url(https://dev.tencent.com/u/views63/p/transfer/git/raw/master/20191023.png);
+  background-repeat:no-repeat;
+  width:60px;
+  height:30px;
+  background-size:60px 26.82px;
+	float:right;
+  margin-top:8px;
+}
+
+ /* 二级标题 */
 #nice h2 {
+  font-size:16px;
+  margin:28px 0;
+	background-color: rgb(255, 255, 255);
+  color: rgb(62, 62, 62);
+  counter-increment: count2;
 }
 
 /* 二级标题内容 */
 #nice h2 span {
+  font-size:16px;
+  padding-left: 2px;
+  color: rgb(0, 112, 192);
+  border-bottom: 2px solid rgb(0, 112, 192);
+  padding-bottom:4px;
+  line-height: 2.2em;
+  color: rgb(0, 112, 192);
+  letter-spacing: 0.1em;
+  font-weight: bold;
 }
 
 /* 二级标题修饰 请参考有实例的主题 */
-#nice h2:after {
+#nice h2:before {
+  content: ""counter(count2)"";
+  margin-right: 8px;
+  padding: 4px 10px;
+  border-bottom: 2px solid rgb(0, 112, 192);
+  line-height: 28px;
+  background-color: rgb(0, 112, 192);
+  color: rgb(255, 255, 255);
+  border-radius: 80% 100% 90% 20%;
+  letter-spacing: 0.1em;
+  float:left;
+  font-weight: bold;
 }
 
 /* 三级标题 */
 #nice h3 {
+  font-size:15px;
+  line-height:2em;
+  text-align: justify;
+  letter-spacing:0.1em;
+  margin:28px 0;
+  font-weight: bold;
 }
 
 /* 三级标题内容 */
@@ -62,7 +128,7 @@ export default `/* 全局属性
 #nice ul {
 }
 
-/* 无序列表整体样式
+/* 有序列表整体样式
  * list-style-type: upper-roman|lower-greek|lower-alpha;
  */
 #nice ol {
@@ -71,20 +137,30 @@ export default `/* 全局属性
 /* 列表内容，不要设置li
  */
 #nice li section {
+  font-size:15px;
+  line-height:1.75em;
+  text-align: justify;
+  letter-spacing:0.1em;
+  color:#333;
 }
 
 /* 引用
-* 左边缘颜色 border-left-color: black;
-* 背景色 background: gray;
-*/
+ * 左边缘颜色 border-left-color: black;
+ * 背景色 background: gray;
+ */
 #nice blockquote {
 }
 
 /* 引用文字 */
 #nice blockquote p {
+  font-size:15px;
+  line-height:1.75em;
+  text-align: justify;
+  letter-spacing:0.1em;
+  color:#333;
 }
 
-/* 链接 
+/* 链接
  * border-bottom: 1px solid #009688;
  */
 #nice a {
@@ -92,6 +168,11 @@ export default `/* 全局属性
 
 /* 加粗 */
 #nice strong {
+  color: rgb(123, 12, 0);
+}
+
+#nice b {
+  color: #407600;
 }
 
 /* 斜体 */
@@ -107,9 +188,9 @@ export default `/* 全局属性
 }
 
 /* 分隔线
-* 粗细、样式和颜色
-* border-top: 1px solid #3e3e3e;
-*/
+ * 粗细、样式和颜色
+ * border-top: 1px solid #3e3e3e;
+ */
 #nice hr {
 }
 
@@ -119,10 +200,13 @@ export default `/* 全局属性
 * 居左 margin: 0 0;
 */
 #nice img {
+  max-width:80% !important;
 }
 
 /* 图片描述文字 */
 #nice figcaption {
+  line-height:1.75em;
+  letter-spacing:0.1em;
 }
 
 /* 行内代码 */
@@ -144,6 +228,11 @@ export default `/* 全局属性
  */
 #nice table tr th,
 #nice table tr td {
+  font-size:14px;
+  line-height:2em;
+  text-align: justify;
+  letter-spacing:0.1em;
+  color:#333;
 }
 
 /* 脚注文字 */
@@ -154,7 +243,7 @@ export default `/* 全局属性
 #nice .footnote-ref {
 }
 
-/* "参考资料"四个字 
+/* "参考资料"四个字
  * 内容 content: "参考资料";
  */
 #nice .footnotes-sep:before {
@@ -165,11 +254,16 @@ export default `/* 全局属性
 }
 
 /* 参考资料文字 */
-#nice .footnote-item p { 
+#nice .footnote-item p {
 }
 
 /* 参考资料解释 */
 #nice .footnote-item p em {
+}
+
+#nice .block-equation {  
+  font-size: 15px;
+  margin: 1em 0;
 }
 
 /* 行间公式
@@ -180,5 +274,5 @@ export default `/* 全局属性
 
 /* 行内公式
  */
-#nice .inline-equation svg { 
+#nice .inline-equation svg {
 }`;
