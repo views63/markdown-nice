@@ -1,32 +1,33 @@
+import * as keyEvents from "./editorKeyEvents";
+import {isPlatformWindows} from "./helper";
+
 const handlePressHotkey = (type, content) => {
   const {markdownEditor} = content;
-  const cursor = markdownEditor.getCursor();
   const selection = markdownEditor.getSelection();
-  const wrapChar = /windows|win32/i.test(navigator.userAgent) ? "\r\n" : "\n";
   switch (type) {
     case "Bold":
-      markdownEditor.replaceSelection(`**${selection}**`, cursor);
+      keyEvents.bold(markdownEditor, selection);
       break;
     case "Del":
-      markdownEditor.replaceSelection(`~~${selection}~~`, cursor);
+      keyEvents.del(markdownEditor, selection);
       break;
     case "Italic":
-      markdownEditor.replaceSelection(`*${selection}*`, cursor);
+      keyEvents.italic(markdownEditor, selection);
       break;
     case "Code":
-      markdownEditor.replaceSelection(`${wrapChar}\`\`\`${wrapChar}${selection}${wrapChar}\`\`\`${wrapChar}`);
+      keyEvents.code(markdownEditor, selection);
       break;
     case "InlineCode":
-      markdownEditor.replaceSelection(`\`${selection}\``, cursor);
+      keyEvents.inlineCode(markdownEditor, selection);
       break;
     case "H1":
-      markdownEditor.replaceSelection(`# ${selection}`, cursor);
+      keyEvents.h1(markdownEditor, selection);
       break;
     case "H2":
-      markdownEditor.replaceSelection(`## ${selection}`, cursor);
+      keyEvents.h2(markdownEditor, selection);
       break;
     case "H3":
-      markdownEditor.replaceSelection(`### ${selection}`, cursor);
+      keyEvents.h3(markdownEditor, selection);
       break;
     default:
       return;
@@ -37,8 +38,7 @@ const handlePressHotkey = (type, content) => {
 };
 
 const bindHotkeys = (content, dialog) =>
-  // /macintosh|mac\sos\s+x/i.test(navigator.userAgent)
-  /windows|win32/i.test(navigator.userAgent)
+  isPlatformWindows
     ? {
         "Ctrl-B": () => {
           handlePressHotkey("Bold", content);
@@ -52,7 +52,7 @@ const bindHotkeys = (content, dialog) =>
         "Ctrl-Alt-C": () => {
           handlePressHotkey("Code", content);
         },
-        "Ctrl-Alt-F": () => {
+        "Ctrl-Alt-V": () => {
           handlePressHotkey("InlineCode", content);
         },
         "Ctrl-Alt-1": () => {
@@ -73,6 +73,18 @@ const bindHotkeys = (content, dialog) =>
         "Ctrl-Alt-T": () => {
           dialog.setFormOpen(true);
         },
+        "Ctrl-Alt-S": () => {
+          // Converting between sans serif and serif
+        },
+        "Alt-Shift-L": () => {
+          keyEvents.parseLinkToFoot(content.content, content);
+        },
+        "Alt-Shift-F": () => {
+          keyEvents.formatDoc(content.content, content);
+        },
+        "Ctrl-F": () => {
+          dialog.setSearchOpen(!dialog.isSearchOpen);
+        },
       }
     : {
         "Cmd-B": () => {
@@ -87,7 +99,7 @@ const bindHotkeys = (content, dialog) =>
         "Cmd-Alt-C": () => {
           handlePressHotkey("Code", content);
         },
-        "Cmd-Alt-F": () => {
+        "Cmd-Alt-V": () => {
           handlePressHotkey("InlineCode", content);
         },
         "Cmd-Alt-1": () => {
@@ -108,7 +120,47 @@ const bindHotkeys = (content, dialog) =>
         "Cmd-Alt-T": () => {
           dialog.setFormOpen(true);
         },
+        "Cmd-Alt-S": () => {
+          // Converting between sans serif and serif
+        },
+        "Alt-Shift-L": () => {
+          keyEvents.parseLinkToFoot(content.content, content);
+        },
+        "Alt-Shift-F": () => {
+          keyEvents.formatDoc(content.content, content);
+        },
+        "Cmd-F": () => {
+          dialog.setSearchOpen(!dialog.isSearchOpen);
+        },
       };
+
+export const hotKeys = isPlatformWindows
+  ? {
+      bold: "Ctrl+B",
+      del: "Ctrl+U",
+      italic: "Ctrl+I",
+      code: "Ctrl+Alt+C",
+      inlineCode: "Ctrl+Alt+V",
+      link: "Ctrl+K",
+      image: "Ctrl+Alt+I",
+      form: "Ctrl+Alt+T",
+      format: "Alt+Shift+F",
+      linkToFoot: "Alt+Shift+L",
+      search: "Ctrl+F",
+    }
+  : {
+      bold: "⌘B",
+      del: "⌘U",
+      italic: "⌘I",
+      code: "⌥⌘C",
+      inlineCode: "⌥⌘V",
+      link: "⌘K",
+      image: "⌥⌘I",
+      form: "⌥⌘T",
+      format: "⌥⇧F",
+      linkToFoot: "⌥⇧L",
+      search: "⌘F",
+    };
 
 export const betterTab = (cm) => {
   if (cm.somethingSelected()) {
@@ -120,5 +172,26 @@ export const betterTab = (cm) => {
       "+input",
     );
   }
+};
+
+export const rightClick = (cm) => {
+  const ele = document.getElementById("nice-md-editor");
+  ele.oncontextmenu = (e) => {
+    const element = document.getElementById("nice-editor-menu");
+    element.style.display = "block";
+    // event--ie  ev--其他浏览器
+    const oEvent = window.event || window.ev;
+    // documentElement--其他游览器    body--谷歌
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    // 菜单的style样式跟随鼠标的位置
+    element.style.top = oEvent.clientY + scrollTop + "px";
+    const scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+    element.style.left = oEvent.clientX + scrollLeft + "px";
+    return false;
+  };
+  window.onclick = (e) => {
+    const element = document.getElementById("nice-editor-menu");
+    element.style.display = "none";
+  };
 };
 export default bindHotkeys;

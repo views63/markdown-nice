@@ -14,6 +14,8 @@ import scienceBlue from "./markdown/scienceBlue";
 import shanchui from "./markdown/shanchui";
 import simple from "./markdown/simple";
 import wechatFormat from "./markdown/wechatFormat";
+import rose from "./markdown/rose";
+import cuteGreen from "./markdown/cuteGreen";
 
 import content from "./content.md";
 
@@ -44,6 +46,8 @@ export default {
     shanchui,
     simple,
     wechatFormat,
+    rose,
+    cuteGreen,
   },
   code: {
     atomOneDark,
