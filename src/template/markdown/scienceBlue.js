@@ -42,6 +42,7 @@ export default `
 #nice h1 span {
   font-size: 1.4em;
   letter-spacing:0.1em;
+  line-height:1.5em;
   font-weight: bold;
   color:#ffffff;
   color: #0e88eb;
