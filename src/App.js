@@ -226,10 +226,8 @@ class App extends Component {
     const {codeNum, previewType} = this.props.navbar;
     const {isEditAreaOpen, isPreviewAreaOpen, isStyleEditorOpen, isImmersiveEditing} = this.props.view;
 
-    const parseHtml =
-      codeNum === 0
-        ? markdownParserWechat.render(this.props.content.content)
-        : markdownParser.render(this.props.content.content);
+    const content = this.props.content.content.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    const parseHtml = codeNum === 0 ? markdownParserWechat.render(content) : markdownParser.render(content);
 
     const mdEditingClass = classnames({
       "nice-md-editing": !isImmersiveEditing,
