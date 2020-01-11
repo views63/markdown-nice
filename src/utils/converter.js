@@ -127,16 +127,35 @@ export const solveHtml = () => {
     res = res.replace(codeReg, convertTag);
   }
 
-  res = res.replace(/counter-increment: \S+?;/g, "");
   const counter = /"counter\((\S+?)\)"/g;
   const dict = {};
-  res = res.replace(counter, (matched, key) => {
-    let value = dict[key];
-    value = value ? value + 1 : 1;
-    dict[key] = value;
-    return value;
-  });
 
+  let tmp = "";
+  const list = res.split(/(counter-increment: \S+?;)/);
+  for (let index = 0; index < list.length; index++) {
+    let curr = list[index];
+    const matched = curr.match(/counter-increment: (\S+?);/);
+    if (matched) {
+      const name = matched[1];
+      let value = dict[name];
+      value = value ? value + 1 : 1;
+      dict[name] = value;
+      continue;
+    }
+
+    curr = curr.replace(counter, (match, key) => {
+      const value = dict[key];
+      if (value) {
+        return value;
+      } else {
+        return match;
+      }
+    });
+
+    tmp += curr;
+  }
+
+  res = tmp;
   const commentReg = /\/\* comment\n([\s\S]+?)\n\*\//m;
   const comment = markdownStyle.match(commentReg);
 
