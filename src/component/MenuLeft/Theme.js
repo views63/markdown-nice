@@ -2,7 +2,7 @@ import React from "react";
 import {Menu, Dropdown} from "antd";
 import {observer, inject} from "mobx-react";
 
-import {TEMPLATE_OPTIONS, RIGHT_SYMBOL} from "../../utils/constant";
+import {TEMPLATE_OPTIONS, RIGHT_SYMBOL, COMMENT} from "../../utils/constant";
 import TEMPLATE from "../../template/index";
 import "./Theme.css";
 
@@ -23,6 +23,24 @@ class Theme extends React.Component {
       this.props.view.setStyleEditorOpen(true);
     } else {
       this.props.content.setStyle(TEMPLATE.style[id]);
+      const style = TEMPLATE.style[id];
+      const commentReg = /\/\* comment\n(.+?)\n\*\//;
+      const comment = style.match(commentReg);
+      if (comment != null) {
+        const ctxs = comment[1].split(",");
+        if (ctxs.length < 2 && ctxs.length % 2 === 1) {
+          return;
+        }
+
+        COMMENT.length = 0;
+        const endIndex = ctxs.length - 1;
+        for (let idx = 0; idx < endIndex; idx += 2) {
+          const key = ctxs[idx].trim();
+          const value = ctxs[idx + 1].trim();
+          const kv = {key, value};
+          COMMENT.push(kv);
+        }
+      }
     }
   };
 
