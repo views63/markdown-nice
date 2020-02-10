@@ -5,7 +5,6 @@ import "codemirror/keymap/sublime";
 import "antd/dist/antd.css";
 import {observer, inject} from "mobx-react";
 import classnames from "classnames";
-import throttle from "lodash.throttle";
 
 import Dialog from "./layout/Dialog";
 import Navbar from "./layout/Navbar";
@@ -25,7 +24,7 @@ import {
   MJX_DATA_FORMULA,
   MJX_DATA_FORMULA_TYPE,
 } from "./utils/constant";
-import {markdownParser, markdownParserWechat, updateMathjax} from "./utils/helper";
+import {markdownParser, markdownParserWechat, updateMathjax, throttle} from "./utils/helper";
 import pluginCenter from "./utils/pluginCenter";
 import appContext from "./utils/appContext";
 import {uploadAdaptor} from "./utils/imageHosting";
@@ -42,7 +41,6 @@ class App extends Component {
     super(props);
     this.focus = false;
     this.scale = 1;
-    this.handleUpdateMathjax = throttle(updateMathjax, 1500);
   }
 
   componentDidMount() {
@@ -82,6 +80,7 @@ class App extends Component {
       pluginCenter.mathjax = true;
     } catch (e) {
       console.log(e);
+      pluginCenter.mathjax = false;
     }
     this.setEditorContent();
     this.setCustomImageHosting();
@@ -89,7 +88,7 @@ class App extends Component {
 
   componentDidUpdate() {
     if (pluginCenter.mathjax) {
-      this.handleUpdateMathjax();
+      throttle(updateMathjax, 1500);
     }
   }
 

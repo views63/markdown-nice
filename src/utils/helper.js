@@ -281,4 +281,15 @@ export const download = (content, filename) => {
   document.body.removeChild(eleLink);
 };
 
+export const throttle = (fun, delay) => {
+  if (fun.timeoutId) {
+    window.clearTimeout(fun.timeoutId);
+  }
+  fun.timeoutId = window.setTimeout(function() {
+    fun();
+    fun.timeoutId = null;
+  }, delay);
+};
+
 export const isPlatformWindows = /windows|win32/i.test(navigator.userAgent);
+
