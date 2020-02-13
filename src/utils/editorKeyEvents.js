@@ -110,3 +110,17 @@ export const h2 = (editor, selection) => {
 export const h3 = (editor, selection) => {
   editor.replaceSelection(`### ${selection}`);
 };
+
+export const inlineMath = (editor, selection) => {
+  editor.replaceSelection(`$${selection}$`);
+  const cursor = editor.getCursor();
+  cursor.ch -= 1;
+  editor.setCursor(cursor);
+};
+
+export const BlockMath = (editor, selection) => {
+  editor.replaceSelection(`$$${selection}$$`);
+  const cursor = editor.getCursor();
+  cursor.ch -= 2;
+  editor.setCursor(cursor);
+};

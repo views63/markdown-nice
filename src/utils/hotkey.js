@@ -30,10 +30,11 @@ const handlePressHotkey = (type, content) => {
       keyEvents.h3(markdownEditor, selection);
       break;
     case "InlineMath":
-      markdownEditor.replaceSelection(`$${selection}$`);
+      keyEvents.inlineMath(markdownEditor, selection);
       break;
     case "BlockMath":
-      markdownEditor.replaceSelection(`$$${selection}$$`);
+      keyEvents.BlockMath(markdownEditor, selection);
+      break;
     default:
       return;
   }
@@ -139,6 +140,12 @@ const bindHotkeys = (content, dialog) =>
         },
         "Alt-Shift-F": () => {
           keyEvents.formatDoc(content.content, content);
+        },
+        "Cmd-M": () => {
+          handlePressHotkey("InlineMath", content);
+        },
+        "Alt-M": () => {
+          handlePressHotkey("BlockMath", content);
         },
         "Cmd-F": () => {
           dialog.setSearchOpen(!dialog.isSearchOpen);
