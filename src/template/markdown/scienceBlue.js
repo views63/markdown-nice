@@ -61,6 +61,7 @@ export default `
 /* 二级标题内容 */
 #nice h2 span {
   font-size: 22px;
+  line-height:1.5em;
   color:#0e88eb;
   font-weight:bolder;
   letter-spacing:0.1em;
@@ -290,8 +291,9 @@ export default `
 #nice .footnote-item p em {
 }
 
-#nice .block-equation {
-  font-size:15px;
+
+#nice .span-block-equation {
+  font-size:16px;
 }
 
 /* 行间公式

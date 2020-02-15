@@ -262,8 +262,11 @@ export default `
 }
 
 #nice .block-equation {  
-  font-size: 15px;
   margin: 1em 0;
+}
+
+#nice .span-block-equation {
+  font-size:15px;
 }
 
 /* 行间公式

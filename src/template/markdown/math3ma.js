@@ -475,6 +475,13 @@ export default `
 https://imgkr.cn-bj.ufileos.com/f9eb6590-3a87-46e5-8bc4-de66f803bc18.jpeg*/
 #nice .inline-equation svg {  
   color: #000;/*#505;*//*#3c70a6;*/
+}
+
+#nice .span-inline-equation {
+  font-size:15px;
+}
+
+#nice .span-block-equation {
   font-size:15px;
 }
 
@@ -491,6 +498,5 @@ https://imgkr.cn-bj.ufileos.com/f9eb6590-3a87-46e5-8bc4-de66f803bc18.jpeg*/
   font-family: Gyre Pagella;
   border-top: 0px dashed #ddd;
   text-align: center;
-  font-size:15px;
   overflow-x: auto;
 }`;

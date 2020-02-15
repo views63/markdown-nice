@@ -71,6 +71,7 @@ class App extends Component {
                   math.typesetRoot.setAttribute(MJX_DATA_FORMULA_TYPE, cls);
                 }
               },
+              this.addContainer,
             ],
           },
         },
@@ -220,6 +221,15 @@ class App extends Component {
       }
     }
   };
+
+  addContainer(math, doc) {
+    const tag = "span";
+    const spanClass = math.display ? "span-block-equation" : "span-inline-equation";
+    const cls = math.display ? "block-equation" : "inline-equation";
+    math.typesetRoot.className = cls;
+    math.typesetRoot.setAttribute("data-formula", math.math);
+    math.typesetRoot = doc.adaptor.node(tag, {class: spanClass, style: "cursor:pointer"}, [math.typesetRoot]);
+  }
 
   render() {
     const {codeNum, previewType} = this.props.navbar;

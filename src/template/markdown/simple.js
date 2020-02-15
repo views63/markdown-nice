@@ -202,7 +202,7 @@ export default `
 #nice .footnote-item p em {
 }
 
-#nice .block-equation {
+#nice .span-block-equation {
   font-size:16px;
 }
 
