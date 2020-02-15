@@ -19,14 +19,12 @@ class Wechat extends Component {
   }
 
   copyWechat = () => {
-    const layout = document.getElementById(LAYOUT_ID); // 保护现场
-    const html = layout.innerHTML;
+    const layout = document.getElementById(LAYOUT_ID);
+    layout.innerHTML = layout.innerHTML.replace(/alt=".+?"/g, "");
     solveWeChatMath();
-    layout.innerHTML = html.replace(/alt=".+?"/g, "");
     this.html = solveHtml();
     copySafari(this.html);
     message.success("已复制，请到微信公众平台粘贴");
-    layout.innerHTML = html; // 恢复现场
   };
 
   render() {

@@ -20,9 +20,9 @@ export const solveWeChatMath = () => {
       break;
     }
 
-    // mjx.removeAttribute("data");
     mjx.removeAttribute("jax");
-    mjx.removeAttribute("display");
+    mjx.removeAttribute("role");
+    mjx.removeAttribute("style");
     mjx.removeAttribute("tabindex");
     mjx.removeAttribute("ctxtmenu_counter");
     const svg = mjx.firstChild;
