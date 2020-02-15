@@ -22,6 +22,7 @@ class Wechat extends Component {
     const layout = document.getElementById(LAYOUT_ID); // 保护现场
     const html = layout.innerHTML;
     solveWeChatMath();
+    layout.innerHTML = html.replace(/alt=".+?"/g, "");
     this.html = solveHtml();
     copySafari(this.html);
     message.success("已复制，请到微信公众平台粘贴");
