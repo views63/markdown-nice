@@ -227,7 +227,7 @@ class App extends Component {
     const spanClass = math.display ? "span-block-equation" : "span-inline-equation";
     const cls = math.display ? "block-equation" : "inline-equation";
     math.typesetRoot.className = cls;
-    math.typesetRoot.setAttribute("data-formula", math.math);
+    math.typesetRoot.setAttribute(MJX_DATA_FORMULA, math.math);
     math.typesetRoot = doc.adaptor.node(tag, {class: spanClass, style: "cursor:pointer"}, [math.typesetRoot]);
   }
 
