@@ -237,6 +237,7 @@ class App extends Component {
 
     let content = this.props.content.content.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
     content = content.replace(/<strong>\*(.+?)<\/strong>\*/g, "<em><strong>$1</strong></em>");
+    content = content.replace(/\*(.+?)\*/g, "<em>$1</em>");
     const parseHtml = codeNum === 0 ? markdownParserWechat.render(content) : markdownParser.render(content);
 
     const mdEditingClass = classnames({
