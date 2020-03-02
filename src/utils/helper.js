@@ -261,6 +261,7 @@ export const addStyleLabel = (styleLabels) => {
   };
   styleLabels.forEach((name) => add(name));
 };
+
 export const updateMathjax = () => {
   window.MathJax.texReset();
   window.MathJax.typesetClear();
@@ -293,3 +294,4 @@ export const throttle = (fun, delay) => {
 
 export const isPlatformWindows = /windows|win32/i.test(navigator.userAgent);
 
+export const packageVersion = process.env.VERSION;
