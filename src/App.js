@@ -234,6 +234,7 @@ class App extends Component {
   render() {
     const {codeNum, previewType} = this.props.navbar;
     const {isEditAreaOpen, isPreviewAreaOpen, isStyleEditorOpen, isImmersiveEditing} = this.props.view;
+    const {isSearchOpen} = this.props.dialog;
 
     let content = this.props.content.content.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
     content = content.replace(/<strong>\*(.+?)<\/strong>\*/g, "<em><strong>$1</strong></em>");
@@ -274,7 +275,7 @@ class App extends Component {
             <Navbar title={defaultTitle} />
             <div className={textContainerClass}>
               <div id="nice-md-editor" className={mdEditingClass} onMouseOver={(e) => this.setCurrentIndex(1, e)}>
-                <SearchBox />
+                {isSearchOpen && <SearchBox />}
                 <CodeMirror
                   value={this.props.content.content}
                   options={{
