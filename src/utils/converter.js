@@ -95,9 +95,7 @@ export const solveHtml = () => {
   }
 
   const inner = element.children[0].children;
-  for (const item of inner) {
-    item.setAttribute("data-tool", "mdnice编辑器");
-  }
+
   let html = element.innerHTML;
   html = html.replace(/<mjx-assistive-mml.+?<\/mjx-assistive-mml>/g, "");
   html = html.replace(/<mjx-container (class="inline.+?)<\/mjx-container>/g, "<mjx $1</mjx>");

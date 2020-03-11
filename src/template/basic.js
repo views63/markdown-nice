@@ -266,7 +266,7 @@ export default `/*默认样式，最佳实践*/
   width: calc(100%-50)
 }
 
-#nice sub, sup {
+#nice sub, #nice sup {
   line-height: 0;
 }
 

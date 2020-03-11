@@ -291,7 +291,7 @@ export default `
   font-size: 13px;
 }
 /* 行内代码 */
-#nice p code, li code {
+#nice p code, #nice li code {
   font-size:15px;
   color: #000;/*rgb(239, 112, 96);*/
   font-weight:bold;
